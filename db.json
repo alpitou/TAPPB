@@ -47,12 +47,36 @@
       "givenName": "Daniel",
       "nationality": "Italian",
       "dateOfBirth": "1 July 1989"
+    },
+    {
+      "name": "Choirul",
+      "driverId": "7",
+      "familyName": "Charles",
+      "givenName": "Lecrec",
+      "nationality": "Monaco",
+      "dateOfBirth": "16 October 1997"
+    },
+    {
+      "name": "George Russell",
+      "driverId": "8",
+      "familyName": "George",
+      "givenName": "Russell",
+      "nationality": "British",
+      "dateOfBirth": "15 March 1998"
+    },
+    {
+      "name": "Bottas",
+      "driverId": "9",
+      "familyName": "Valtteri",
+      "givenName": "Bottas",
+      "nationality": "Finland",
+      "dateOfBirth": "28 August 1989"
     }
   ],
   "circuit": [
     {
       "circuitId": "1",
-      "circuitName": "Austin",
+      "circuitName": "Circuit of the Americas",
       "Location": {
         "locality": "Texas",
         "country": "USA"
@@ -68,7 +92,7 @@
     },
     {
       "circuitId": "3",
-      "circuitName": "Monza",
+      "circuitName": "Autodromo Nazionale Monza",
       "Location": {
         "locality": "Milan",
         "country": "Italia"
@@ -76,7 +100,7 @@
     },
     {
       "circuitId": "4",
-      "circuitName": "Bahrain",
+      "circuitName": "Bahrain International Circuit",
       "Location": {
         "locality": "Sakhir",
         "country": "Bahrain"
@@ -84,7 +108,7 @@
     },
     {
       "circuitId": "5",
-      "circuitName": "Singapore",
+      "circuitName": "Marina Bay Circuit",
       "Location": {
         "locality": "Marina Bay",
         "country": "Singapore"
@@ -96,6 +120,30 @@
       "Location": {
         "locality": "Sakito",
         "country": "Japan"
+      }
+    },
+    {
+      "circuitId": "6",
+      "circuitName": "Autódromo José Carlos Pace",
+      "Location": {
+        "locality": "Interlagos",
+        "country": "Brazil"
+      }
+    },
+    {
+      "circuitId": "7",
+      "circuitName": "Autódromo Hermanos Rodríguez",
+      "Location": {
+        "locality": "Mexico City",
+        "country": "Mexico"
+      }
+    },
+    {
+      "circuitId": "8",
+      "circuitName": "Red Bull Ring",
+      "Location": {
+        "locality": "Speilberg",
+        "country": "Austria"
       }
     }
   ]
