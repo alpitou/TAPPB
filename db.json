@@ -23,6 +23,30 @@
       "givenName": "Sergio",
       "nationality": "Mexico",
       "dateOfBirth": "26 January 1990"
+    },
+    {
+      "name": "Max Verstappen",
+      "driverId": "4",
+      "familyName": "Verstappen",
+      "givenName": "Max",
+      "nationality": "Dutch",
+      "dateOfBirth": "30 September 1997"
+    },
+    {
+      "name": "Lewis Hamilton",
+      "driverId": "5",
+      "familyName": "Hamilton",
+      "givenName": "Lewis",
+      "nationality": "British",
+      "dateOfBirth": "7 January 1985"
+    },
+    {
+      "name": "Danny",
+      "driverId": "6",
+      "familyName": "Ricciardo",
+      "givenName": "Daniel",
+      "nationality": "Italian",
+      "dateOfBirth": "1 July 1989"
     }
   ],
   "circuit": [
@@ -48,6 +72,30 @@
       "Location": {
         "locality": "Milan",
         "country": "Italia"
+      }
+    },
+    {
+      "circuitId": "4",
+      "circuitName": "Bahrain",
+      "Location": {
+        "locality": "Sakhir",
+        "country": "Bahrain"
+      }
+    },
+    {
+      "circuitId": "5",
+      "circuitName": "Singapore",
+      "Location": {
+        "locality": "Marina Bay",
+        "country": "Singapore"
+      }
+    },
+    {
+      "circuitId": "5",
+      "circuitName": "Suzuka",
+      "Location": {
+        "locality": "Sakito",
+        "country": "Japan"
       }
     }
   ]
