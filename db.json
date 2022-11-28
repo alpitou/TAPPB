@@ -29,17 +29,26 @@
     {
       "uuid": "1",
       "name": "Austin",
-      "location": "USA"
+      "location": {
+        "locality": "Texas",
+        "country": "USA"
+      }
     },
     {
       "uuid": "2",
       "name": "Circuit de Monaco",
-      "location": "Monaco"
+      "location": {
+        "locality": "Monaco",
+        "country": "Monaco"
+      }
     },
     {
       "uuid": "3",
       "name": "Monza",
-      "location": "Italia"
+      "location": {
+        "locality": "Milan",
+        "country": "Italia"
+      }
     }
   ]
 }

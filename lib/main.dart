@@ -185,7 +185,8 @@ Future<List<Seasons>> fetchSeasonsList() async {
   //   'x-rapidapi-host': 'api-formula-1.p.rapidapi.com',
   //   'x-rapidapi-key': 'cf5aae3f2dmshcd438ec09b4c502p162dbfjsn5f4c66d38bea',
   // };
-  String api = 'http://ergast.com/api/f1/circuits.json';
+  String api =
+      'https://my-json-server.typicode.com/danielandhika/F1geek/circuit';
   final response = await http.get(
     Uri.parse(api),
     // headers: headers,
