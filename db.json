@@ -145,6 +145,14 @@
         "locality": "Speilberg",
         "country": "Austria"
       }
+    },
+    {
+      "circuitId": "8",
+      "circuitName": "Circuit Gilles-Villeneuve",
+      "Location": {
+        "locality": "Montreal",
+        "country": "Canada"
+      }
     }
   ]
 }
