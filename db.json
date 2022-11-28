@@ -1,0 +1,45 @@
+{
+  "driver": [
+    {
+      "name": "Mick Schumacher",
+      "uuid": "1",
+      "familyName": "Schumacher",
+      "givenName": "Mick",
+      "nationality": "German",
+      "hbd": "2 March 1999"
+    },
+    {
+      "name": "Fernando Alonso",
+      "uuid": "2",
+      "familyName": "Alonso",
+      "givenName": "Fernando",
+      "nationality": "Spanish",
+      "hbd": "29 July 1981"
+    },
+    {
+      "name": "Checo",
+      "uuid": "3",
+      "familyName": "Perez",
+      "givenName": "Sergio",
+      "nationality": "Mexico",
+      "hbd": "26 January 1990"
+    }
+  ],
+  "circuit": [
+    {
+      "uuid": "1",
+      "name": "Austin",
+      "location": "USA"
+    },
+    {
+      "uuid": "2",
+      "name": "Circuit de Monaco",
+      "location": "Monaco"
+    },
+    {
+      "uuid": "3",
+      "name": "Monza",
+      "location": "Italia"
+    }
+  ]
+}

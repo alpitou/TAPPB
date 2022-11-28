@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key key}) : super(key: key);
@@ -11,14 +12,17 @@ class Profile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
-              height: 10,
+              height: 200,
             ),
             Text(
-              'F1Pedia',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              'F1 GEEK',
+              style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xffFFFFFF)),
             ),
             SizedBox(
-              height: 300,
+              height: 50,
             ),
             CircleAvatar(
               radius: 50,
@@ -28,13 +32,38 @@ class Profile extends StatelessWidget {
               height: 10,
             ),
             Text(
-              'Alif Nabil Musyaffa',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              'Daniel Andhika Yudistya',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  color: Color(0xffFFFFFF)),
             ),
-            SizedBox(
-              height: 4,
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton.icon(
+                  icon: FaIcon(FontAwesomeIcons.github),
+                  // icon: FaIcon(FontAwesomeIcons.github),
+                  onPressed: () {},
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                    ),
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.pink),
+                    padding: MaterialStateProperty.all(
+                      EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                    ),
+                  ),
+                  label: Text(
+                    "GitHub",
+                  ),
+                ),
+              ],
             ),
-            Text('21120119130078'),
           ],
         ),
       ),

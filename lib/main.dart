@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
       title: 'F1 Pedia',
       home: MainPage(),
       debugShowCheckedModeBanner: false,
+      theme: new ThemeData(scaffoldBackgroundColor: const Color(0xFFFF0000)),
     );
   }
 }
@@ -58,10 +59,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 10,
                 ),
                 Text(
-                  'Circuits',
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  'DAFTAR SIRKUIT',
+                  style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFFFFFFFF)),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.only(left: 20),
                   child: SizedBox(
@@ -80,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Card(
                                   borderOnForeground: false,
                                   shadowColor: Colors.black,
-                                  color: Color(0xffF5F5DC),
+                                  color: Color(0xffFFFFFF),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
@@ -101,6 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           fontSize: 15),
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 1,
+                                      textAlign: TextAlign.center,
                                     ),
                                     // subtitle: Text(
                                     //   snapshot.data[index].president,

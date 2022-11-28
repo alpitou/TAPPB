@@ -32,7 +32,7 @@ class _CircuitDriverPageState extends State<CircuitDriverPage> {
         iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: Color(0xff1F1D2B),
         title: Text(
-          'Details',
+          'DETAIL SIRKUIT',
           style:
               TextStyle(color: Colors.white, letterSpacing: .5, fontSize: 15),
           overflow: TextOverflow.ellipsis,
@@ -66,16 +66,16 @@ class _CircuitDriverPageState extends State<CircuitDriverPage> {
                             SizedBox(
                               height: 4,
                             ),
-                            Text("Round = " +
+                            Text("GP = " +
                                 snapshot.data[index].location.locality),
                             SizedBox(
                               height: 4,
                             ),
-                            Text("Race Name = " + snapshot.data[index].name),
+                            Text("Nama Sirkuit = " + snapshot.data[index].name),
                             SizedBox(
                               height: 4,
                             ),
-                            Text("Country = " +
+                            Text("Negara = " +
                                 snapshot.data[index].location.country),
                           ],
                         ),

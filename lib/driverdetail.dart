@@ -32,7 +32,7 @@ class _DetailDriverPageState extends State<DetailDriverPage> {
         iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: Color(0xff1F1D2B),
         title: Text(
-          'Details',
+          'DETAIL PEMBALAP',
           style:
               TextStyle(color: Colors.white, letterSpacing: .5, fontSize: 15),
           overflow: TextOverflow.ellipsis,
@@ -54,7 +54,7 @@ class _DetailDriverPageState extends State<DetailDriverPage> {
                   child: Card(
                       borderOnForeground: false,
                       shadowColor: Colors.black,
-                      color: Color(0xffF5F5DC),
+                      color: Color(0xffFFFFFF),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.0),
                       ),
@@ -70,7 +70,7 @@ class _DetailDriverPageState extends State<DetailDriverPage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                    "Name = " + snapshot.data[index].givenName),
+                                    "Nama = " + snapshot.data[index].givenName),
                                 SizedBox(
                                   width: 2,
                                 ),
@@ -80,11 +80,11 @@ class _DetailDriverPageState extends State<DetailDriverPage> {
                             SizedBox(
                               height: 4,
                             ),
-                            Text("Birthdate= " + snapshot.data[index].hbd),
+                            Text("Tanggal Lahir = " + snapshot.data[index].hbd),
                             SizedBox(
                               height: 4,
                             ),
-                            Text("Country = " +
+                            Text("Asal Negara = " +
                                 snapshot.data[index].nationality),
                           ],
                         ),
