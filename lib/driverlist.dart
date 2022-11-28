@@ -143,7 +143,8 @@ Future<List<Drivers>> fetchDriverList() async {
   //   'x-rapidapi-host': 'api-formula-1.p.rapidapi.com',
   //   'x-rapidapi-key': 'cf5aae3f2dmshcd438ec09b4c502p162dbfjsn5f4c66d38bea',
   // };
-  String api = 'http://ergast.com/api/f1/drivers.json';
+  String api =
+      'https://my-json-server.typicode.com/danielandhika/F1geek/driver';
   final response = await http.get(
     Uri.parse(api),
     // headers: headers,
@@ -152,8 +153,12 @@ Future<List<Drivers>> fetchDriverList() async {
   if (response.statusCode == 200) {
     print(response.body);
     print(response.statusCode);
-    var driversShowsJson = jsonDecode(response.body)["MRData"]['DriverTable']
-            ['Drivers'] as List,
+    // var driversShowsJson = jsonDecode(response.body)["MRData"]['DriverTable']
+    //         ['Drivers'] as List,
+    //     driversShows =
+    //         driversShowsJson.map((top) => Drivers.fromJson(top)).toList();
+
+    var driversShowsJson = jsonDecode(response.body) as List,
         driversShows =
             driversShowsJson.map((top) => Drivers.fromJson(top)).toList();
 

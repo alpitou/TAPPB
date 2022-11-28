@@ -195,8 +195,11 @@ Future<List<Seasons>> fetchSeasonsList() async {
   if (response.statusCode == 200) {
     print(response.body);
     print(response.statusCode);
-    var driversShowsJson = jsonDecode(response.body)["MRData"]['CircuitTable']
-            ['Circuits'] as List,
+    // var driversShowsJson = jsonDecode(response.body)["MRData"]['CircuitTable']
+    //         ['Circuits'] as List,
+    //     driversShows =
+    //         driversShowsJson.map((top) => Seasons.fromJson(top)).toList();
+    var driversShowsJson = jsonDecode(response.body) as List,
         driversShows =
             driversShowsJson.map((top) => Seasons.fromJson(top)).toList();
 

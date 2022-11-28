@@ -129,7 +129,8 @@ class Location {
 }
 
 Future<List<SeasonDetail>> fetchDetails(uuid) async {
-  String api = 'http://ergast.com/api/f1/circuits/$uuid.json';
+  String api =
+      'https://my-json-server.typicode.com/danielandhika/F1geek/circuit?uuid=$uuid';
   final response = await http.get(
     Uri.parse(api),
     // headers: headers,
@@ -138,11 +139,14 @@ Future<List<SeasonDetail>> fetchDetails(uuid) async {
   if (response.statusCode == 200) {
     print(response.body);
     print(response.statusCode);
-    var driversShowsJson = jsonDecode(response.body)["MRData"]['CircuitTable']
-            ['Circuits'] as List,
+    // var driversShowsJson = jsonDecode(response.body)["MRData"]['CircuitTable']
+    //         ['Circuits'] as List,
+    //     driversShows =
+    //         driversShowsJson.map((top) => SeasonDetail.fromJson(top)).toList();
+
+    var driversShowsJson = jsonDecode(response.body) as List,
         driversShows =
             driversShowsJson.map((top) => SeasonDetail.fromJson(top)).toList();
-
     return driversShows;
   } else {
     throw Exception('Failed to load drivers');
