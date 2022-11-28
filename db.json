@@ -29,7 +29,7 @@
     {
       "circuitId": "1",
       "circuitName": "Austin",
-      "location": {
+      "Location": {
         "locality": "Texas",
         "country": "USA"
       }
@@ -37,7 +37,7 @@
     {
       "circuitId": "2",
       "circuitName": "Circuit de Monaco",
-      "location": {
+      "Location": {
         "locality": "Monaco",
         "country": "Monaco"
       }
@@ -45,7 +45,7 @@
     {
       "circuitId": "3",
       "circuitName": "Monza",
-      "location": {
+      "Location": {
         "locality": "Milan",
         "country": "Italia"
       }
