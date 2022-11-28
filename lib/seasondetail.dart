@@ -130,7 +130,7 @@ class Location {
 
 Future<List<SeasonDetail>> fetchDetails(uuid) async {
   String api =
-      'https://my-json-server.typicode.com/danielandhika/F1geek/circuit?uuid=$uuid';
+      'https://my-json-server.typicode.com/danielandhika/F1geek/circuit?circuitId=$uuid';
   final response = await http.get(
     Uri.parse(api),
     // headers: headers,

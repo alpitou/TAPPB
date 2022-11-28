@@ -155,7 +155,7 @@ class DriverDetail {
 
 Future<List<DriverDetail>> fetchDetails(uuid) async {
   String api =
-      'https://my-json-server.typicode.com/danielandhika/F1geek/driver?uuid=$uuid';
+      'https://my-json-server.typicode.com/danielandhika/F1geek/driver?driverId=$uuid';
   final response = await http.get(
     Uri.parse(api),
     // headers: headers,

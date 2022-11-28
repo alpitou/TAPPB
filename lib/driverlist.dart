@@ -68,7 +68,7 @@ class _DriverListState extends State<DriverList> {
                                 //   radius: 25.0,
                                 // ),
                                 title: Text(
-                                  snapshot.data[index].uuid,
+                                  snapshot.data[index].givenName,
                                   style: TextStyle(
                                       color: Color(0xFF000000),
                                       letterSpacing: .5,

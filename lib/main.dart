@@ -98,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     //   radius: 25.0,
                                     // ),
                                     title: Text(
-                                      snapshot.data[index].uuid,
+                                      snapshot.data[index].name,
                                       style: TextStyle(
                                           color: Colors.black,
                                           letterSpacing: .5,
