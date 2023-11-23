@@ -115,7 +115,7 @@
       }
     },
     {
-      "circuitId": "5",
+      "circuitId": "6",
       "circuitName": "Suzuka",
       "Location": {
         "locality": "Sakito",
@@ -123,7 +123,7 @@
       }
     },
     {
-      "circuitId": "6",
+      "circuitId": "7",
       "circuitName": "Autódromo José Carlos Pace",
       "Location": {
         "locality": "Interlagos",
@@ -131,7 +131,7 @@
       }
     },
     {
-      "circuitId": "7",
+      "circuitId": "8",
       "circuitName": "Autódromo Hermanos Rodríguez",
       "Location": {
         "locality": "Mexico City",
@@ -139,7 +139,7 @@
       }
     },
     {
-      "circuitId": "8",
+      "circuitId": "9",
       "circuitName": "Red Bull Ring",
       "Location": {
         "locality": "Speilberg",
@@ -147,7 +147,7 @@
       }
     },
     {
-      "circuitId": "9",
+      "circuitId": "10",
       "circuitName": "Circuit Gilles-Villeneuve",
       "Location": {
         "locality": "Montreal",

@@ -5,9 +5,10 @@ import 'dart:convert';
 // ignore: must_be_immutable
 class DetailDriverPage extends StatefulWidget {
   final String item;
-  DetailDriverPage({
-    Key key,
-    this.item,
+
+  const DetailDriverPage({
+    Key? key,
+    required this.item,
   }) : super(key: key);
 
   @override
@@ -15,7 +16,7 @@ class DetailDriverPage extends StatefulWidget {
 }
 
 class _DetailDriverPageState extends State<DetailDriverPage> {
-  Future<List<DriverDetail>> detail;
+  late Future<List<DriverDetail>> detail;
 
   @override
   void initState() {
@@ -33,25 +34,24 @@ class _DetailDriverPageState extends State<DetailDriverPage> {
         backgroundColor: Color(0xff1F1D2B),
         title: Text(
           'DETAIL PEMBALAP',
-          style:
-              TextStyle(color: Colors.white, letterSpacing: .5, fontSize: 15),
+          style: TextStyle(color: Colors.white, letterSpacing: .5, fontSize: 15),
           overflow: TextOverflow.ellipsis,
         ),
         elevation: 0,
       ),
       body: SingleChildScrollView(
         child: Center(
-            child: FutureBuilder<List<DriverDetail>>(
-          future: detail,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return ListView.builder(
-                physics: ClampingScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: snapshot.data.length,
-                itemBuilder: (BuildContext context, int index) => Padding(
-                  padding: const EdgeInsets.only(right: 20, left: 20),
-                  child: Card(
+          child: FutureBuilder<List<DriverDetail>>(
+            future: detail,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return ListView.builder(
+                  physics: ClampingScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: snapshot.data?.length ?? 0, // Gunakan null-aware operator
+                  itemBuilder: (BuildContext context, int index) => Padding(
+                    padding: const EdgeInsets.only(right: 20, left: 20),
+                    child: Card(
                       borderOnForeground: false,
                       shadowColor: Colors.black,
                       color: Color(0xffFFFFFF),
@@ -62,115 +62,82 @@ class _DetailDriverPageState extends State<DetailDriverPage> {
                         padding: const EdgeInsets.all(8.0),
                         child: Column(
                           children: [
-                            // Text("Year = " + snapshot.data[index].uuid),
                             SizedBox(
                               height: 4,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
-                                    "Nama = " + snapshot.data[index].givenName),
+                                Text("Nama = " + (snapshot.data?[index]?.givenName ?? "")),
                                 SizedBox(
                                   width: 2,
                                 ),
-                                Text(snapshot.data[index].familyName),
+                                Text(snapshot.data?[index]?.familyName ?? ""),
                               ],
                             ),
                             SizedBox(
                               height: 4,
                             ),
-                            Text("Tanggal Lahir = " + snapshot.data[index].hbd),
+                            Text("Tanggal Lahir = " + (snapshot.data?[index]?.hbd ?? "")),
                             SizedBox(
                               height: 4,
                             ),
-                            Text("Asal Negara = " +
-                                snapshot.data[index].nationality),
+                            Text("Asal Negara = " + (snapshot.data?[index]?.nationality ?? "")),
                           ],
                         ),
-                      )),
-                ),
-              );
-            } else if (snapshot.hasError) {
+                      ),
+                    ),
+                  ),
+                );
+              } else if (snapshot.hasError) {
+                return Center(
+                  child: Text("${snapshot.error}"),
+                );
+              }
               return Center(
-                child: Text("${snapshot.error}"),
+                child: const CircularProgressIndicator(),
               );
-            }
-            return Center(
-              child: const CircularProgressIndicator(),
-            );
-          },
-        )),
+            },
+          ),
+        ),
       ),
     );
   }
 }
 
 class DriverDetail {
-  String name;
   String uuid;
-  String nationality;
   String givenName;
-  String hbd;
   String familyName;
-
-  // Location location;
+  String nationality;
+  String hbd;
 
   DriverDetail({
-    this.uuid,
-    this.name,
-    this.familyName,
-    this.givenName,
-    this.nationality,
-    this.hbd,
-    // this.location,
-  });
+  required this.uuid,
+  required this.givenName,
+  required this.familyName,
+  required this.nationality,
+  required this.hbd,
+});
 
-  factory DriverDetail.fromJson(json) {
+  factory DriverDetail.fromJson(Map<String, dynamic> json) {
     return DriverDetail(
-      name: json['circuitName'],
       uuid: json['driverId'],
-      familyName: json['familyName'],
       givenName: json['givenName'],
+      familyName: json['familyName'],
       nationality: json['nationality'],
       hbd: json['dateOfBirth'],
-      // location: Location.fromJson(json['Location']),
     );
   }
 }
 
-// class Location {
-//   String locality;
-//   String country;
-
-//   Location({this.locality, this.country});
-
-//   factory Location.fromJson(json) {
-//     return Location(
-//       locality: json['locality'],
-//       country: json['country'],
-//     );
-//   }
-// }
-
 Future<List<DriverDetail>> fetchDetails(uuid) async {
-  String api =
-      'https://my-json-server.typicode.com/danielandhika/F1geek/driver?driverId=$uuid';
-  final response = await http.get(
-    Uri.parse(api),
-    // headers: headers,
-  );
+  String api = 'https://my-json-server.typicode.com/alpitou/f1pedia/driver?driverId=$uuid';
+  final response = await http.get(Uri.parse(api));
 
   if (response.statusCode == 200) {
-    print(response.body);
-    print(response.statusCode);
-    // var driversShowsJson = jsonDecode(response.body)["MRData"]['DriverTable']
-    //         ['Drivers'] as List,
-    //     driversShows =
-    //         driversShowsJson.map((top) => DriverDetail.fromJson(top)).toList();
-    var driversShowsJson = jsonDecode(response.body) as List,
-        driversShows =
-            driversShowsJson.map((top) => DriverDetail.fromJson(top)).toList();
+    var driversShowsJson = jsonDecode(response.body) as List;
+    var driversShows = driversShowsJson.map((top) => DriverDetail.fromJson(top)).toList();
 
     return driversShows;
   } else {

@@ -24,9 +24,9 @@ class _MainPageState extends State<MainPage> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: CustomLineIndicatorBottomNavbar(
-        selectedColor: Color(0xff180c20),
-        unSelectedColor: Color(0xffFF0000),
-        backgroundColor: Colors.white,
+        selectedColor: Color.fromARGB(255, 0, 0, 0),
+        unSelectedColor: Colors.white,
+        backgroundColor: Color.fromARGB(255, 220, 23, 23),
         currentIndex: _selectedIndex,
         onTap: (index) {
           setState(() {
@@ -37,13 +37,13 @@ class _MainPageState extends State<MainPage> {
         lineIndicatorWidth: 3,
         indicatorType: IndicatorType.Top,
         customBottomBarItems: [
-          CustomBottomBarItems(label: 'Sirkuit', icon: Icons.edit_road),
+          CustomBottomBarItems(label: 'Circuit', icon: Icons.edit_road),
           CustomBottomBarItems(
-            label: 'Pembalap',
+            label: 'Drivers',
             icon: Icons.settings_input_svideo,
           ),
           CustomBottomBarItems(
-            label: 'Profile',
+            label: 'MyProfile',
             icon: Icons.account_box_outlined,
           ),
         ],

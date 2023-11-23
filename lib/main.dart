@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 
 class MyHttpOverrides extends HttpOverrides {
   @override
-  HttpClient createHttpClient(SecurityContext context) {
+ HttpClient createHttpClient(SecurityContext? context) {
     return super.createHttpClient(context)
       ..badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
@@ -27,20 +27,20 @@ class MyApp extends StatelessWidget {
       title: 'F1 Pedia',
       home: MainPage(),
       debugShowCheckedModeBanner: false,
-      theme: new ThemeData(scaffoldBackgroundColor: const Color(0xFFFF0000)),
+      theme: new ThemeData(scaffoldBackgroundColor: Color.fromARGB(255, 255, 255, 255)),
     );
   }
 }
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Future<List<Seasons>> seasons;
+  late Future<List<Seasons>> seasons;
   @override
   void initState() {
     super.initState();
@@ -63,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFFFFFFFF)),
+                      color: Color.fromARGB(255, 0, 0, 0)),
                 ),
                 SizedBox(height: 20),
                 Padding(
@@ -77,14 +77,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             return ListView.builder(
                               physics: ClampingScrollPhysics(),
                               shrinkWrap: true,
-                              itemCount: snapshot.data.length,
+                              itemCount: snapshot.data?.length ?? 0, // Gunakan null-aware operator
                               itemBuilder: (BuildContext context, int index) =>
                                   Padding(
                                 padding: const EdgeInsets.only(right: 20),
                                 child: Card(
                                   borderOnForeground: false,
                                   shadowColor: Colors.black,
-                                  color: Color(0xffFFFFFF),
+                                  color: Color.fromARGB(255, 0, 0, 0),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
@@ -98,9 +98,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                     //   radius: 25.0,
                                     // ),
                                     title: Text(
-                                      snapshot.data[index].name,
+                                     snapshot.data?[index]?.name ?? 'Nama Tidak Tersedia',
                                       style: TextStyle(
-                                          color: Colors.black,
+                                          color: Colors.white,
                                           letterSpacing: .5,
                                           fontSize: 15),
                                       overflow: TextOverflow.ellipsis,
@@ -122,7 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         MaterialPageRoute(
                                           builder: (context) =>
                                               CircuitDriverPage(
-                                            item: snapshot.data[index].uuid,
+                                            item: snapshot.data?[index]?.uuid ?? 'UUID_Tidak_Tersedia',
                                           ),
                                         ),
                                       );
@@ -158,8 +158,8 @@ class Seasons {
   // final String rating;
 
   Seasons({
-    this.uuid,
-    this.name,
+    required this.uuid,
+    required this.name,
     // this.president,
     // this.image,
 
@@ -186,7 +186,7 @@ Future<List<Seasons>> fetchSeasonsList() async {
   //   'x-rapidapi-key': 'cf5aae3f2dmshcd438ec09b4c502p162dbfjsn5f4c66d38bea',
   // };
   String api =
-      'https://my-json-server.typicode.com/danielandhika/F1geek/circuit';
+      'https://my-json-server.typicode.com/alpitou/f1pedia/circuit';
   final response = await http.get(
     Uri.parse(api),
     // headers: headers,

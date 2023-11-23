@@ -6,8 +6,8 @@ import 'dart:convert';
 class CircuitDriverPage extends StatefulWidget {
   final String item;
   CircuitDriverPage({
-    Key key,
-    this.item,
+    Key? key,
+    required this.item,
   }) : super(key: key);
 
   @override
@@ -15,7 +15,7 @@ class CircuitDriverPage extends StatefulWidget {
 }
 
 class _CircuitDriverPageState extends State<CircuitDriverPage> {
-  Future<List<SeasonDetail>> detail;
+  late Future<List<SeasonDetail>> detail;
 
   @override
   void initState() {
@@ -48,7 +48,7 @@ class _CircuitDriverPageState extends State<CircuitDriverPage> {
               return ListView.builder(
                 physics: ClampingScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: snapshot.data.length,
+                itemCount: snapshot.data?.length ?? 0, // Gunakan null-aware operator
                 itemBuilder: (BuildContext context, int index) => Padding(
                   padding: const EdgeInsets.only(right: 20, left: 20),
                   child: Card(
@@ -66,17 +66,15 @@ class _CircuitDriverPageState extends State<CircuitDriverPage> {
                             SizedBox(
                               height: 4,
                             ),
-                            Text("GP = " +
-                                snapshot.data[index].location.locality),
+                            Text("GP = ${snapshot.data?[index]?.location?.locality ?? 'Local_Tidak_Tersedia'}"),
                             SizedBox(
                               height: 4,
                             ),
-                            Text("Nama Sirkuit = " + snapshot.data[index].name),
+                            Text("Nama Sirkuit = ${snapshot.data?[index]?.name ?? 'Nama_Tidak_Tersedia'}"),
                             SizedBox(
                               height: 4,
                             ),
-                            Text("Negara = " +
-                                snapshot.data[index].location.country),
+                            Text("Negara = ${snapshot.data?[index]?.location?.country ?? 'Negara_Tidak_Tersedia'}"),
                           ],
                         ),
                       )),
@@ -103,7 +101,7 @@ class SeasonDetail {
 
   Location location;
 
-  SeasonDetail({this.uuid, this.name, this.location});
+  SeasonDetail({required this.uuid, required this.name, required this.location});
 
   factory SeasonDetail.fromJson(json) {
     return SeasonDetail(
@@ -118,7 +116,7 @@ class Location {
   String locality;
   String country;
 
-  Location({this.locality, this.country});
+  Location({required this.locality, required this.country});
 
   factory Location.fromJson(json) {
     return Location(
@@ -130,7 +128,7 @@ class Location {
 
 Future<List<SeasonDetail>> fetchDetails(uuid) async {
   String api =
-      'https://my-json-server.typicode.com/danielandhika/F1geek/circuit?circuitId=$uuid';
+      'https://my-json-server.typicode.com/alpitou/f1pedia/circuit?circuitId=$uuid';
   final response = await http.get(
     Uri.parse(api),
     // headers: headers,

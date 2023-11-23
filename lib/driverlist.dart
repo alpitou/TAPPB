@@ -5,14 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class DriverList extends StatefulWidget {
-  const DriverList({Key key}) : super(key: key);
+  const DriverList({Key? key}) : super(key: key);
 
   @override
   _DriverListState createState() => _DriverListState();
 }
 
 class _DriverListState extends State<DriverList> {
-  Future<List<Drivers>> drivers;
+  late Future<List<Drivers>> drivers; // Ganti List<Drivers> dengan List<Driver>
+  
   @override
   void initState() {
     super.initState();
@@ -33,7 +34,7 @@ class _DriverListState extends State<DriverList> {
               style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFFFFFFFF)),
+                  color: Color.fromARGB(255, 0, 0, 0)),
             ),
             SizedBox(height: 20),
             Padding(
@@ -47,14 +48,14 @@ class _DriverListState extends State<DriverList> {
                         return ListView.builder(
                           physics: ClampingScrollPhysics(),
                           shrinkWrap: true,
-                          itemCount: snapshot.data.length,
+                          itemCount: snapshot.data?.length ?? 0, // Gunakan null-aware operator
                           itemBuilder: (BuildContext context, int index) =>
                               Padding(
                             padding: const EdgeInsets.only(right: 20),
                             child: Card(
                               borderOnForeground: false,
                               shadowColor: Colors.black,
-                              color: Color(0xffFFFFFF),
+                              color: Color.fromARGB(255, 0, 0, 0),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
@@ -68,9 +69,9 @@ class _DriverListState extends State<DriverList> {
                                 //   radius: 25.0,
                                 // ),
                                 title: Text(
-                                  snapshot.data[index].givenName,
+                                  snapshot.data?[index]?.givenName?.toString() ?? 'Nama Tidak Tersedia',
                                   style: TextStyle(
-                                      color: Color(0xFF000000),
+                                      color: Colors.white,
                                       letterSpacing: .5,
                                       fontSize: 15),
                                   overflow: TextOverflow.ellipsis,
@@ -91,7 +92,7 @@ class _DriverListState extends State<DriverList> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => DetailDriverPage(
-                                        item: snapshot.data[index].uuid,
+                                        item: snapshot.data?[index]?.uuid?.toString() ?? 'UUID_Tidak_Tersedia',
                                       ),
                                     ),
                                   );
@@ -122,9 +123,9 @@ class Drivers {
   String familyName;
 
   Drivers({
-    this.uuid,
-    this.givenName,
-    this.familyName,
+  required this.uuid,
+  required this.givenName,
+  required this.familyName,
   });
 
   factory Drivers.fromJson(Map<String, dynamic> json) {
@@ -143,8 +144,7 @@ Future<List<Drivers>> fetchDriverList() async {
   //   'x-rapidapi-host': 'api-formula-1.p.rapidapi.com',
   //   'x-rapidapi-key': 'cf5aae3f2dmshcd438ec09b4c502p162dbfjsn5f4c66d38bea',
   // };
-  String api =
-      'https://my-json-server.typicode.com/danielandhika/F1geek/driver';
+  String api ='https://my-json-server.typicode.com/alpitou/f1pedia/driver';
   final response = await http.get(
     Uri.parse(api),
     // headers: headers,
